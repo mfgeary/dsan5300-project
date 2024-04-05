@@ -1,8 +1,6 @@
----
-title: Statistical Learning Project
-subtitle: DSAN 5300
-author: Marion Bauman, Varun Patel, Aaron Schwall, Yuhan Cui
----
+# Statistical Learning Project
+*DSAN 5300*
+*Marion Bauman, Varun Patel, Aaron Schwall, Yuhan Cui*
 
 ## Data Source
 
