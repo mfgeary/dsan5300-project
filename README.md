@@ -1,5 +1,7 @@
 # Statistical Learning Project
+
 *DSAN 5300*
+
 *Marion Bauman, Varun Patel, Aaron Schwall, Yuhan Cui*
 
 ## Data Source
