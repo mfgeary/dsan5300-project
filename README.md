@@ -15,4 +15,5 @@ The repo is organized as follows:
 * `data/` contains our data as well as the documentation for the data. It contains two subfolders:
     * `raw/`, which contains the raw data, and
     * `clean/`, which contains the cleaned data.
-* `code/` contains all of our code for the project. It is further organized into subfolders based on the type of code/phase of the project.
+* `code/` contains all of our code for the project. It is further organized into subfolders based on the type of code/phase of the project. Current subfolders are:
+    * `data-cleaning/`, which contains code for cleaning the data
