@@ -2,7 +2,7 @@
 
 **DSAN 5300**
 
-**Authors:** Marion Bauman (@mfgeary), Yuhan Cui, Varun Patel (@vp472), Aaron Schwall (@aaron-schwall)
+**Authors:** Marion Bauman ([@mfgeary](https://github.com/mfgeary)), Yuhan Cui, Varun Patel ([@vp472](https://github.com/vp472)), Aaron Schwall ([@aaron-schwall](https://github.com/aaron-schwall))
 
 ## Data Source
 
