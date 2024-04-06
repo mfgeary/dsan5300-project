@@ -13,11 +13,16 @@ library(arrow)
 library(readxl)
 
 # Read in raw data
-household <- read_csv("data/raw/hhv2pub.csv")
-person <- read_csv("data/raw/perv2pub.csv")
-trip <- read_csv("data/raw/tripv2pub.csv")
-vehicle <- read_csv("data/raw/vehv2pub.csv")
-long_distance <- read_csv("data/raw/ldtv2pub.csv")
+household <- read_csv("data/raw/hhv2pub.csv") |>
+    mutate(across(everything(), as.character))
+person <- read_csv("data/raw/perv2pub.csv") |>
+    mutate(across(everything(), as.character))
+trip <- read_csv("data/raw/tripv2pub.csv") |>
+    mutate(across(everything(), as.character))
+vehicle <- read_csv("data/raw/vehv2pub.csv") |>
+    mutate(across(everything(), as.character))
+long_distance <- read_csv("data/raw/ldtv2pub.csv") |>
+    mutate(across(everything(), as.character))
 
 # Read in the data dictionary
 data_dictionary <- read_excel("data/dictionary.xlsx")
@@ -43,6 +48,7 @@ clean_codebook <- function(codebook) {
             key = str_split_fixed(code_range, "=", 2)[,1],
             value = str_split_fixed(code_range, "=", 2)[,2]
         ) |>
+        mutate(key = as.character(key)) |>
         select(Name, key, value) |>
         # Nest the key and value as a tibble - we will use these to recode
         # the data later :)
@@ -57,6 +63,51 @@ person_codebook <- clean_codebook(person_codebook)
 trip_codebook <- clean_codebook(trip_codebook)
 vehicle_codebook <- clean_codebook(vehicle_codebook)
 long_distance_codebook <- clean_codebook(long_distance_codebook)
+
+# Map the codebook to the data to recode the columns
+# The codebook contains the key-value pairs for each categorical variable
+
+recode_columns <- function(codebook, data) {
+    for (i in 1:nrow(codebook)) {
+        name <- codebook$Name[i]
+        code_ranges <- codebook$code_ranges[[i]]
+        data <- data |>
+            left_join(
+                code_ranges,
+                by = join_by({{name}} == "key")
+            ) |>
+            rename("{name}_value" := "value")
+    }
+
+    # remove columns with all NA values
+    data <- data %>%
+        select(where(~!all(is.na(.))))
+    # remove columns with all blank values
+    data <- data %>%
+        select(where(~!all(. == "")))
+
+    # if a column has a _value suffix, remove the original column
+    # and rename the _value column to the original column name
+    new_cols <- data |>
+        select(ends_with("_value")) |>
+        colnames()
+
+    for (col in new_cols) {
+        orig_col <- str_remove(col, "_value")
+        data <- data |>
+            select(-{{orig_col}}) |>
+            rename({{orig_col}} := {{col}})
+    }
+
+    return(data)
+}
+
+# Recode the columns using the codebook
+household <- recode_columns(household_codebook, household)
+person <- recode_columns(person_codebook, person)
+trip <- recode_columns(trip_codebook, trip)
+vehicle <- recode_columns(vehicle_codebook, vehicle)
+long_distance <- recode_columns(long_distance_codebook, long_distance)
 
 # Map the data dictionary to more explanatory names
 data_dictionary <- data_dictionary |>
@@ -292,22 +343,6 @@ data_dictionary <- data_dictionary |>
         NAME == "YOUNGCHILD" ~ "num_children_under_5",
         TRUE ~ NAME
     ))
-
-# Recode the columns using the codebook
-hh_codebook <- 
-
-
-
-
-
-
-
-
-
-
-
-
-# Clean all column names with the data dictionaries
 
 # Get the household data dictionary
 hh_dict <- data_dictionary |>
