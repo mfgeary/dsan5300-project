@@ -22,6 +22,42 @@ long_distance <- read_csv("data/raw/ldtv2pub.csv")
 # Read in the data dictionary
 data_dictionary <- read_excel("data/dictionary.xlsx")
 
+# Read in the codebook
+household_codebook <- read_excel("data/codebook.xlsx", sheet = "Household")
+person_codebook <- read_excel("data/codebook.xlsx", sheet = "Person")
+trip_codebook <- read_excel("data/codebook.xlsx", sheet = "Trip")
+vehicle_codebook <- read_excel("data/codebook.xlsx", sheet = "Vehicle")
+long_distance_codebook <- read_excel("data/codebook.xlsx", sheet = "Long Distance")
+
+clean_codebook <- function(codebook) {
+    codebook |>
+        select(Name, `Code / Range`, Type) |>
+        rename(code_range = `Code / Range`) |>
+        # Fill down the name
+        fill(Name) |>
+        # Fill down the type
+        fill(Type) |>
+        # We only need to recode categorical variables
+        filter(Type == "C") |>
+        mutate(
+            key = str_split_fixed(code_range, "=", 2)[,1],
+            value = str_split_fixed(code_range, "=", 2)[,2]
+        ) |>
+        select(Name, key, value) |>
+        # Nest the key and value as a tibble - we will use these to recode
+        # the data later :)
+        group_by(Name) |>
+        nest(code_ranges = c(key, value)) |>
+        ungroup()
+}
+
+# Clean the codebooks
+household_codebook <- clean_codebook(household_codebook)
+person_codebook <- clean_codebook(person_codebook)
+trip_codebook <- clean_codebook(trip_codebook)
+vehicle_codebook <- clean_codebook(vehicle_codebook)
+long_distance_codebook <- clean_codebook(long_distance_codebook)
+
 # Map the data dictionary to more explanatory names
 data_dictionary <- data_dictionary |>
     mutate(clean_name = case_when(
@@ -256,6 +292,20 @@ data_dictionary <- data_dictionary |>
         NAME == "YOUNGCHILD" ~ "num_children_under_5",
         TRUE ~ NAME
     ))
+
+# Recode the columns using the codebook
+hh_codebook <- 
+
+
+
+
+
+
+
+
+
+
+
 
 # Clean all column names with the data dictionaries
 
