@@ -1,0 +1,130 @@
+---
+title: Exploratory Data Analysis
+subtitle: DSAN 5300
+author: Marion Bauman
+format:
+    html:
+        embed-resources: true
+    pdf: default
+toc: true
+code:
+    echo: false
+---
+
+In this notebook, we will explore the NHTS data set in order to understand the data and determine what data modeling steps to take.
+
+```{r}
+library(tidyverse)
+library(arrow)
+
+household <- read_parquet("../../data/clean/household.parquet")
+long_distance <- read_parquet("../../data/clean/long_distance.parquet")
+person <- read_parquet("../../data/clean/person.parquet")
+trip <- read_parquet("../../data/clean/trip.parquet")
+vehicle <- read_parquet("../../data/clean/vehicle.parquet")
+```
+
+## Household Data
+```{r}
+household |> glimpse()
+
+household |> summary()
+
+# Corr plot
+household |>
+    select(-household_id) |>
+    select(where(is.numeric)) |>
+    cor() |>
+    corrplot::corrplot(
+        method = "color",
+        type = "upper",
+        tl.col = "black",
+        tl.srt = 45,
+        addCoef.col = "black",
+    )
+```
+
+## Long Distance Data
+
+```{r}
+long_distance |> glimpse()
+
+long_distance |> summary()
+
+# Corr plot
+long_distance |>
+    select(-household_id) |>
+    select(where(is.numeric)) |>
+    cor() |>
+    corrplot::corrplot(
+        method = "color",
+        type = "upper",
+        tl.col = "black",
+        tl.srt = 45,
+        addCoef.col = "black",
+    )
+```
+
+## Person Data
+
+```{r}
+person |> glimpse()
+
+person |> summary()
+
+# Corr plot
+person |>
+    select(-household_id) |>
+    select(where(is.numeric)) |>
+    cor() |>
+    corrplot::corrplot(
+        method = "color",
+        type = "upper",
+        tl.col = "black",
+        tl.srt = 45,
+        addCoef.col = "black",
+    )
+```
+
+## Trip Data
+
+```{r}
+trip |> glimpse()
+
+trip |> summary()
+
+# Corr plot
+trip |>
+    select(-household_id) |>
+    select(where(is.numeric)) |>
+    cor() |>
+    ## ggplot style
+    corrplot::corrplot(
+        method = "color",
+        type = "upper",
+        tl.col = "black",
+        tl.srt = 45,
+        addCoef.col = "black",
+    )
+```
+
+## Vehicle Data
+
+```{r}
+vehicle |> glimpse()
+
+vehicle |> summary()
+
+# Corr plot
+vehicle |>
+    select(-household_id) |>
+    select(where(is.numeric)) |>
+    cor() |>
+    corrplot::corrplot(
+        method = "color",
+        type = "upper",
+        tl.col = "black",
+        tl.srt = 45,
+        addCoef.col = "black",
+    )
+```
