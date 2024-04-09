@@ -38,4 +38,4 @@ The repo is organized as follows:
     * `clean/`, which contains the cleaned data.
 * `code/` contains all of our code for the project. It is further organized into subfolders based on the type of code/phase of the project. Current subfolders are:
     * `data-cleaning/`, which contains code for cleaning the data
-    * `eda`, which has code for doing exploratory data analysis
+    * `eda/`, which has code for doing exploratory data analysis
