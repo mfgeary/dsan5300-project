@@ -19,6 +19,16 @@ There are 5 total datasets that result from the National Household Travel Survey
 
 Note that all datasets are stored as both parquet for preservation of data types and csv for ease of use.
 
+## Things to Do
+
+- [x] Choose dataset
+- [x] Clean the data
+- [ ] Define data science question that will be answered with data
+- [ ] Finish exploratory data analysis
+- [ ] Model the data using statistical learning
+- [ ] Analyze the results
+- [ ] Create poster
+
 ## Repo Organization
 
 The repo is organized as follows:
@@ -29,11 +39,3 @@ The repo is organized as follows:
 * `code/` contains all of our code for the project. It is further organized into subfolders based on the type of code/phase of the project. Current subfolders are:
     * `data-cleaning/`, which contains code for cleaning the data
     * `eda`, which contains code for clean
-
-## Things to Do
-
-- [ ] Define data science question that will be answered with data
-- [ ] Finish exploratory data analysis
-- [ ] Model the data using statistical learning
-- [ ] Analyze the results
-- [ ] Create poster
