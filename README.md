@@ -24,7 +24,7 @@ Note that all datasets are stored as both parquet for preservation of data types
 - [x] Choose dataset
 - [x] Clean the data
 - [ ] Define data science question that will be answered with data
-- [ ] Finish exploratory data analysis
+- [ ] Exploratory data analysis
 - [ ] Model the data using statistical learning
 - [ ] Analyze the results
 - [ ] Create poster
