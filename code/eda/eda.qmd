@@ -16,6 +16,13 @@ In this notebook, we will explore the NHTS data set in order to understand the d
 ```{r}
 library(tidyverse)
 library(arrow)
+library(GGally)
+
+# household <- read_parquet("data/clean/household.parquet")
+# long_distance <- read_parquet("data/clean/long_distance.parquet")
+# person <- read_parquet("data/clean/person.parquet")
+# trip <- read_parquet("data/clean/trip.parquet")
+# vehicle <- read_parquet("data/clean/vehicle.parquet")
 
 household <- read_parquet("../../data/clean/household.parquet")
 long_distance <- read_parquet("../../data/clean/long_distance.parquet")
@@ -24,107 +31,223 @@ trip <- read_parquet("../../data/clean/trip.parquet")
 vehicle <- read_parquet("../../data/clean/vehicle.parquet")
 ```
 
-## Household Data
+## Data Exploration
+
+### Household Data
+
 ```{r}
 household |> glimpse()
-
 household |> summary()
 
-# Corr plot
 household |>
-    select(-household_id) |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
     select(where(is.numeric)) |>
     cor() |>
-    corrplot::corrplot(
-        method = "color",
-        type = "upper",
-        tl.col = "black",
-        tl.srt = 45,
-        addCoef.col = "black",
-    )
+    corrplot::corrplot()
+
+household |>
+    ggplot(aes(count_household_trips)) +
+    geom_bar()
+
+# Plot count_household_trips by all variables
+household |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
+    colnames() -> house_cols
+
+for (col in house_cols) {
+    if (is.character(household[[col]])) {
+        p <- household |>
+            ggplot(aes(x = count_household_trips, fill = .data[[col]])) +
+            geom_density() +
+            facet_wrap(~.data[[col]])
+        print(p)
+    } else if (col == "count_household_trips") {
+        next
+    } else {
+        p <- household |>
+            ggplot(aes(x = count_household_trips, y = .data[[col]])) +
+            geom_jitter(alpha = 0.5)
+        print(p)
+    }
+}
 ```
 
-## Long Distance Data
-
-```{r}
-long_distance |> glimpse()
-
-long_distance |> summary()
-
-# Corr plot
-long_distance |>
-    select(-household_id) |>
-    select(where(is.numeric)) |>
-    cor() |>
-    corrplot::corrplot(
-        method = "color",
-        type = "upper",
-        tl.col = "black",
-        tl.srt = 45,
-        addCoef.col = "black",
-    )
-```
-
-## Person Data
+### Person Data
 
 ```{r}
 person |> glimpse()
-
 person |> summary()
 
-# Corr plot
 person |>
-    select(-household_id) |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
     select(where(is.numeric)) |>
     cor() |>
-    corrplot::corrplot(
-        method = "color",
-        type = "upper",
-        tl.col = "black",
-        tl.srt = 45,
-        addCoef.col = "black",
-    )
+    corrplot::corrplot()
+
+person |>
+    ggplot(aes(count_person_trips)) +
+    geom_bar()
+
+# Plot count_person_trips by all variables
+person |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
+    colnames() -> person_cols
+
+for (col in person_cols) {
+    if (is.character(person[[col]])) {
+        p <- person |>
+            ggplot(aes(x = count_person_trips, fill = .data[[col]])) +
+            geom_density() +
+            facet_wrap(~.data[[col]])
+        print(p)
+    } else if (col == "count_person_trips") {
+        next
+    } else {
+        p <- person |>
+            ggplot(aes(x = count_person_trips, y = .data[[col]])) +
+            geom_jitter(alpha = 0.5)
+        print(p)
+    }
+}
 ```
 
-## Trip Data
+### Trip Data
 
 ```{r}
 trip |> glimpse()
-
 trip |> summary()
 
-# Corr plot
 trip |>
-    select(-household_id) |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
     select(where(is.numeric)) |>
     cor() |>
-    ## ggplot style
-    corrplot::corrplot(
-        method = "color",
-        type = "upper",
-        tl.col = "black",
-        tl.srt = 45,
-        addCoef.col = "black",
-    )
+    corrplot::corrplot()
+
+trip |>
+    ggplot(aes(trip_miles)) +
+    geom_bar()
+
+# Plot trip_miles by all variables
+trip |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
+    colnames() -> trip_cols
+
+for (col in trip_cols) {
+    if (is.character(trip[[col]])) {
+        p <- trip |>
+            ggplot(aes(x = trip_miles, fill = .data[[col]])) +
+            geom_density() +
+            facet_wrap(~.data[[col]]) +
+            scale_x_continuous(
+                trans = "pseudo_log",
+                breaks = c(1, 10, 100, 1000, 10000),
+            )
+        print(p)
+    } else if (col == "trip_miles") {
+        next
+    } else {
+        p <- trip |>
+            ggplot(aes(x = trip_miles, y = .data[[col]])) +
+            geom_jitter(alpha = 0.5) +
+            scale_x_continuous(
+                trans = "pseudo_log",
+                breaks = c(1, 10, 100, 1000, 10000),
+            )
+        print(p)
+    }
+}
 ```
 
-## Vehicle Data
+### Vehicle Data
 
 ```{r}
 vehicle |> glimpse()
-
 vehicle |> summary()
 
-# Corr plot
 vehicle |>
-    select(-household_id) |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
     select(where(is.numeric)) |>
     cor() |>
-    corrplot::corrplot(
-        method = "color",
-        type = "upper",
-        tl.col = "black",
-        tl.srt = 45,
-        addCoef.col = "black",
-    )
+    corrplot::corrplot()
+
+# Pair plot of vehicle data
+vehicle |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
+    select(where(is.numeric)) |>
+    ggpairs()
+```
+
+### Long Distance Data
+
+```{r}
+long_distance |> glimpse()
+long_distance |> summary()
+
+long_distance |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
+    select(where(is.numeric)) |>
+    cor() |>
+    corrplot::corrplot()
+
+# Plot great_circle_distance_traveled by all variables
+long_distance |>
+    select(-contains("id")) |>
+    select(-contains("weight")) |>
+    select(-contains("flag")) |>
+    select(-contains("on_long_distance_trip")) |>
+    colnames() -> long_distance_cols
+
+for (col in long_distance_cols) {
+    print(col)
+    if (is.character(long_distance[[col]])) {
+        p <- long_distance |>
+            ggplot(aes(x = great_circle_distance_traveled, fill = .data[[col]])) +
+            geom_density() +
+            facet_wrap(~.data[[col]]) +
+            scale_x_continuous(
+                trans = "pseudo_log",
+                breaks = c(1, 10, 100, 1000, 10000),
+            )
+        print(p)
+    } else if (col == "great_circle_distance_traveled") {
+        next
+    } else if (inherits(long_distance[[col]], "Date")) {
+        p <- long_distance |>
+            ggplot(aes(x = .data[[col]], y = great_circle_distance_traveled)) +
+            geom_jitter(alpha = 0.5) +
+            scale_x_date() +
+            scale_y_continuous(
+                trans = "pseudo_log",
+                breaks = c(1, 10, 100, 1000, 10000),
+            )
+        print(p)
+    } else {
+        p <- long_distance |>
+            ggplot(aes(x = great_circle_distance_traveled, y = .data[[col]])) +
+            geom_jitter(alpha = 0.5) +
+            scale_x_continuous(
+                trans = "pseudo_log",
+                breaks = c(1, 10, 100, 1000, 10000)
+            )
+        print(p)
+    }
+}
 ```
