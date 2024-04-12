@@ -19,12 +19,16 @@ There are 5 total datasets that result from the National Household Travel Survey
 
 Note that all datasets are stored as both parquet for preservation of data types and csv for ease of use.
 
+## Exploratory Data Analysis
+
+Our EDA can be found in the `eda/` folder. It can be viewed in either `eda.html` or `eda.pdf`.
+
 ## Things to Do
 
 - [x] Choose dataset
 - [x] Clean the data
 - [ ] Define data science question that will be answered with data
-- [ ] Exploratory data analysis
+- [x] Exploratory data analysis
 - [ ] Model the data using statistical learning
 - [ ] Analyze the results
 - [ ] Create poster
