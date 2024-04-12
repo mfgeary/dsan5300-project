@@ -414,6 +414,24 @@ for (i in 1:nrow(data_dictionary)) {
     }
 }
 
+# Change the date columns to date type
+household <- household |>
+    mutate(travel_day_date = ym(travel_day_date))
+
+person <- person |>
+    mutate(travel_day_date = ym(travel_day_date))
+
+trip <- trip |>
+    mutate(travel_day_date = ym(travel_day_date))
+
+vehicle <- vehicle |>
+    mutate(travel_day_date = ym(travel_day_date))
+
+long_distance <- long_distance |>
+    mutate(
+        travel_day_date = ym(travel_day_date)
+    )
+
 # Save the cleaned data as parquet and csv
 household |> write_parquet("data/clean/household.parquet")
 household |> write_csv("data/clean/household.csv")
