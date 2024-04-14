@@ -1,0 +1,46 @@
+---
+title:  "Poster Title"
+author:
+  - name: Marion Bauman
+    affil: 1
+  - name: Yuhan Cui
+    affil: 1
+  - name: Varun Patel
+    affil: 1
+  - name: Aaron Schwall
+    affil: 1
+affiliation:
+    - num: 1
+      address: "Department of Data Science and Analytics, Georgetown University"
+primary_colour: "#002e62"
+secondary_colour: "#BBBCBC"
+accent_colour: "#63666A"
+column_numbers: 3
+logoleft_name: "georgetown_ms_dsan_logo.jpeg"
+logoright_name: "FHWA-logo.jpeg"
+output:
+    posterdown::posterdown_html
+---
+
+# 1 Introduction
+
+Intro to project + goals
+
+# 2 Data
+
+Info about data from NHTS
+
+# 3 Modeling
+
+Modeling process
+
+# 4 Results
+
+Visualize results
+
+# 5 Conclusions
+
+Draw conclusions
+
+# References
+
