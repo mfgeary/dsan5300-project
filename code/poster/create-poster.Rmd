@@ -22,22 +22,25 @@ output:
     posterdown::posterdown_html
 ---
 
-# Introduction
+# 1 Introduction
 
 Intro to project + goals
 
-# Data
+# 2 Data
 
 Info about data from NHTS
 
-# Modeling
+# 3 Modeling
 
 Modeling process
 
-# Results
+# 4 Results
 
 Visualize results
 
-# Conclusions
+# 5 Conclusions
 
 Draw conclusions
+
+# References
+
