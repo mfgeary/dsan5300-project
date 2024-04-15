@@ -1,0 +1,155 @@
+---
+title: "Data Modelling DSAN5300 Final Project"
+format: html
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+```
+
+## MODEL 1 - Target is 'Count of Household Trips'
+
+### Initial Cleaning
+```{python}
+household = pd.read_csv(r"C:\Users\varun\Documents\DSAN @ GU\5300-project-group-6\data\clean\household.csv")
+household["travel_day_date"] = pd.to_datetime(household["travel_day_date"])
+
+label_encoder = LabelEncoder()
+scaler = MinMaxScaler()
+for col in household.columns.drop('count_household_trips'):
+  if household[col].dtype == object:
+    household[col] = label_encoder.fit_transform(household[col])
+  else: # Normalize
+    household[col] = scaler.fit_transform(household[col].values.reshape(-1, 1))
+
+
+target = household["count_household_trips"].to_numpy()
+features = household.drop('count_household_trips', axis=1).to_numpy()
+
+x_train, x_test, y_train, y_test = train_test_split(features, target, test_size=0.2)
+print(x_train.shape)
+print(x_test.shape)
+print(y_train.shape)
+print(y_test.shape)
+```
+
+### Hyperparameter Tuning
+The results suggest that the best parameters are :
+{'max_depth': 7, 'min_samples_split': 3, 'n_estimators': 200}
+
+```{python}
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': list(range(1,11)),
+    'min_samples_split': list(range(2,11))
+}
+rf = RandomForestClassifier()
+grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=5, scoring='accuracy')
+grid_search.fit(x_train, y_train)
+best_params = grid_search.best_params_
+```
+
+```{python}
+print(best_params)
+```
+
+### Training the model and evaluating it
+```{python}
+rf = RandomForestClassifier(max_depth=7,min_samples_split=3,n_estimators=200)
+rf.fit(x_train, y_train)
+# Evaluate model
+train_accuracy = rf_classifier.score(x_train, y_train)
+test_accuracy = rf_classifier.score(x_test, y_test)
+print("Training Accuracy:", train_accuracy)
+print("Testing Accuracy:", test_accuracy)
+```
+
+## Model 2 - Target is 'Purpose of Trips'
+
+```{python}
+trips = pd.read_csv(r"C:\Users\varun\Documents\DSAN @ GU\5300-project-group-6\data\clean\trip.csv")
+trips.info()
+```
+
+```{python}
+trips['trip_purpose'].value_counts()
+```
+
+```{python}
+X = trips.drop(['trip_purpose','household_id','person_id','trip_id','sequential_trip_id','household_stratum_id','vehicle_case_id','vehicle_id'], axis=1)
+y = trips['trip_purpose']
+```
+
+# Split the data into training and testing sets
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+```{python}
+categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('onehot', OneHotEncoder(), categorical_cols)
+    ],
+    remainder='passthrough'
+)
+```
+
+# Define the Random Forest classifier
+```{python}
+rf = RandomForestClassifier()
+
+
+pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('classifier', rf)
+])
+pipeline.fit(X_train, y_train)
+
+# Evaluate the model
+train_accuracy = pipeline.score(X_train, y_train)
+test_accuracy = pipeline.score(X_test, y_test)
+print("Training Accuracy:", train_accuracy)
+print("Testing Accuracy:", test_accuracy)
+```
+
+
+### Feature Importnce plot
+```{python}
+'''
+def plot_feature_importances(model, feature_names):
+    n_features = len(feature_names)
+    plt.figure(figsize=(10, 6))  # Adjust the figure size if needed
+    plt.barh(range(n_features), model.feature_importances_, align='center')
+    plt.yticks(range(n_features), feature_names)
+    plt.xlabel("Feature importance")
+    plt.ylabel("Feature")
+    plt.show()
+
+plot_feature_importances(rf_classifier,x_train.columns)
+'''
+```
+
+### Sample Decision Tree
+
+```{python}
+'''
+from sklearn.tree import plot_tree
+plt.figure(figsize=(20,10))
+plot_tree(rf_classifier.estimators_[0], filled=True, feature_names=x_train.columns)
+plt.show()
+'''
+```
+
