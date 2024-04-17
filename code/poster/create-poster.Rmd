@@ -41,9 +41,14 @@ In order to determine the best model for predicting trip purposes, we trained a 
 
 ### Logistic Regression
 
+Our best logistic regression model used L2 regularization and a C value of 10. The best accuracy achieved was ~0.46 and the AUC was 0.75. 
+
+![](logit_conf.png){width=70%}
+
 ### Random Forest
 
-Our Random forest model had the parameters min_sample_split = 3, max_depth ranging from 2 to 15 and n *estimators = 100. The accuracy was 0.499 for a max*\_depth of 2 and 0.759 for a max_depth of 15.
+Our Random forest model had the parameters min_sample_split = 3, max_depth ranging from 2 to 15 and n_estimators = 100. The accuracy was 0.499 for a max_depth of 2 and 0.759 for a max_depth of 15.
+
 ![](Randomfores_max_depth_v_test_acc.png){width=70%}
 
 ![](feature-importances.png){width=70%}
@@ -69,17 +74,17 @@ Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has 
 ![](model-prediction-certainty-by-class.png){width=70%}
 
 
-| Model                  | Accuracy       | ROC AUC |
+| Model                  | Best Accuracy  | ROC AUC |
 |------------------------|----------------|---------|
 | Logistic Regression    | 0.4576         | 0.75    |
-| Random Forest          | 0.499 to 0.759 | ??      |
+| Random Forest          | 0.759          | 0.93    |
 | XGBoost                | 0.8116         | 0.97    |
 | Support Vector Machine | 0.5111         | 0.79    |
 | Multilayer Perceptron  | 0.5771         | 0.89    |
 
 # 5 Conclusions
 
-Draw conclusions
+Based on this study, we can see that the XGBoost classifier has the best testing accuracy of 0.8116. The most important features in this model are reason for travel and worker status. Hopefully this model can be used in the future to inform those who wish to study American's movements based on this data.
 
 # References
 
