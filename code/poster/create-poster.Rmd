@@ -24,14 +24,13 @@ output:
 
 # 1 Introduction
 
-In this project we will be studying trips taken by individuals and attempting to predict the trip's purpose. Trip purpose is significant in many fields ranging from Environmental protection resource allocation to urban planning and development. 
+Americans are constantly taking trips by commuting, going to the store, visiting friends, or going on vacation. Understanding American travel patterns and why Americans travel can provide insights into fields ranging from environmental protection resource allocation to urban planning to economic trends. This statistical research is aimed at studying travel behavior of the American population by predicting the purpose of a trip.
 
 # 2 Data
 
-In this study we used data from the National Household Travel Survey (NHTS) collected by the National Highway Administration. This data contains information on trips taken for many purposes by the American public. It is one of the only data sources that allows users to analyze household trips based on household and person level information. 
+In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data details the trips that Americans take contains information on individual and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information. 
 
-<img src="trip_purpose.png" width="1200" height="700" alt="Distribution of trip purposes.">
-
+<img src="trip-purpose-distribution.png" width="1200" height="700" alt="Distribution of trip purposes.">
 
 # 3 Modeling
 
