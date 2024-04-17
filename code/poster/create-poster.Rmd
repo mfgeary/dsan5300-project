@@ -40,6 +40,8 @@ In order to determine the best model for predicting trip purposes, we trained a 
 
 ### Random Forest
 
+<img src="feature-importances.png">
+
 ### XGBoost
 
 Our best xgboost model had parameters subsample = 0.6, number of estimators = 300, max_depth = 9, learning_rate = 0.1, gamma = 0, and colsample_bytre = 1.0. It achieved an accuracy rate of ~63%.
@@ -54,7 +56,9 @@ Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has 
 
 # 4 Results
 
-<img src="model-performance-by-class.png" alt="ROC Curve for multi-class classification">
+<img src="model-prediction-certainty-by-class.png">
+
+<img src="model-performance-by-class.png">
 
 <img src="roc-auc.png" alt="ROC Curve for multi-class classification">
 
