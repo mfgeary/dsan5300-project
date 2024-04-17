@@ -28,9 +28,9 @@ Americans are constantly taking trips by commuting, going to the store, visiting
 
 # 2 Data
 
-In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information. 
+In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information.
 
-<img src="trip-purpose-distribution.png" width="1200" height="700" alt="Distribution of trip purposes.">
+<img src="trip-purpose-distribution.png" alt="Distribution of trip purposes." width="1200" height="700"/>
 
 # 3 Methods
 
@@ -40,31 +40,35 @@ In order to determine the best model for predicting trip purposes, we trained a 
 
 ### Random Forest
 
+Our Random forest model had the parameters min_sample_split = 3, max_depth ranging from 2 to 15 and n *estimators = 100. The accuracy was 0.499 for a max*\_depth of 2 and 0.759 for a max_depth of 15.
+
+![](Randomforest max depth vs test accuracy plot.png){width="396"}
+
 ### XGBoost
 
-Our best xgboost model had parameters subsample = 0.6, number of estimators = 300, max_depth = 9, learning_rate = 0.1, gamma = 0, and colsample_bytre = 1.0. It achieved an accuracy rate of ~63%.
+Our best xgboost model had parameters subsample = 0.6, number of estimators = 300, max_depth = 9, learning_rate = 0.1, gamma = 0, and colsample_bytre = 1.0. It achieved an accuracy rate of \~63%.
 
 ## Logistic Regression
 
 ### Support Vector Machine (SVM)
 
-Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has an accuracy of ~53.3%.
+Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has an accuracy of \~53.3%.
 
 ### Multilayer Perceptron
 
 # 4 Results
 
-<img src="model-performance-by-class.png" alt="ROC Curve for multi-class classification">
+<img src="model-performance-by-class.png" alt="ROC Curve for multi-class classification"/>
 
-<img src="roc-auc.png" alt="ROC Curve for multi-class classification">
+<img src="roc-auc.png" alt="ROC Curve for multi-class classification"/>
 
-| Model | Accuracy | ROC AUC |
-|-------|----------|---------|
-| Logistic Regression | 0.4576 | 0.75 |
-| Random Forest | ?? | ?? |
-| XGBoost | 0.8116 | 0.97 |
-| Support Vector Machine | 0.5111 | 0.79 |
-| Multilayer Perceptron | 0.5771 | 0.89 |
+| Model                  | Accuracy       | ROC AUC |
+|------------------------|----------------|---------|
+| Logistic Regression    | 0.4576         | 0.75    |
+| Random Forest          | 0.499 to 0.759 | ??      |
+| XGBoost                | 0.8116         | 0.97    |
+| Support Vector Machine | 0.5111         | 0.79    |
+| Multilayer Perceptron  | 0.5771         | 0.89    |
 
 # 5 Conclusions
 
@@ -72,7 +76,4 @@ Draw conclusions
 
 # References
 
-Federal Highway Administration. (2022). 2022 NextGen NHTS National Passenger OD Data, U.S. Department of Transportation, Washington, DC. Available online: https://nhts.ornl.gov/od/.
-
-
-
+Federal Highway Administration. (2022). 2022 NextGen NHTS National Passenger OD Data, U.S. Department of Transportation, Washington, DC. Available online: <https://nhts.ornl.gov/od/>.
