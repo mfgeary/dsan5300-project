@@ -29,10 +29,10 @@ Our EDA can be found in the `eda/` folder. It can be viewed in either `eda.html`
 
 - [x] Choose dataset
 - [x] Clean the data
-- [ ] Define data science question that will be answered with data
+- [x] Define data science question that will be answered with data
 - [x] Exploratory data analysis
-- [ ] Model the data using statistical learning
-- [ ] Analyze the results
+- [x] Model the data using statistical learning
+- [x] Analyze the results
 - [ ] Create poster
 
 ## Repo Organization
