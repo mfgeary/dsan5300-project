@@ -40,9 +40,13 @@ In order to determine the best model for predicting trip purposes, we trained a 
 
 ### Random Forest
 
+<<<<<<< HEAD
 Our Random forest model had the parameters min_sample_split = 3, max_depth ranging from 2 to 15 and n *estimators = 100. The accuracy was 0.499 for a max*\_depth of 2 and 0.759 for a max_depth of 15.
 
 ![](Randomforest max depth vs test accuracy plot.png){width="396"}
+=======
+<img src="feature-importances.png">
+>>>>>>> 0705b21e50423d3b469d73f2f6d9418672546cc7
 
 ### XGBoost
 
@@ -58,7 +62,13 @@ Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has 
 
 # 4 Results
 
+<<<<<<< HEAD
 <img src="model-performance-by-class.png" alt="ROC Curve for multi-class classification"/>
+=======
+<img src="model-prediction-certainty-by-class.png">
+
+<img src="model-performance-by-class.png">
+>>>>>>> 0705b21e50423d3b469d73f2f6d9418672546cc7
 
 <img src="roc-auc.png" alt="ROC Curve for multi-class classification"/>
 
