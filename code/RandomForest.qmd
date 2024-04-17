@@ -93,31 +93,21 @@ y = trips['trip_purpose']
 ```
 
 ```{python}
-trips['start_trip_time']
-```
-
-```{python}
-categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('onehot', OneHotEncoder(), categorical_cols)
-    ],
-    remainder='passthrough'
-)
+categorical_cols = X.select_dtypes(include=['object']).columns
+one_hot_encoded = pd.get_dummies(X, columns=categorical_cols)
 ```
 
 # Split the data into training and testing sets
 ```{python}
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(one_hot_encoded, y, test_size=0.2, random_state=42)
 ```
 
 # Hyperparam tuning 
 ```{python}
-'''
 param_grid = {
-    'n_estimators': [50, 100, 200],
-    'max_depth': list(range(1,11)),
-    'min_samples_split': list(range(2,11))
+    'n_estimators': [50, 100],
+    'max_depth': list(range(1,4)),
+    'min_samples_split': list(range(2,6))
 }
 rf = RandomForestClassifier()
 grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=5, scoring='accuracy')
@@ -126,51 +116,74 @@ best_params = grid_search.best_params_
 ```
 
 ```{python}
-'''
 print(f"Best params: {best_params}")
 ```
 
 # Define the Random Forest classifier
 ```{python}
-rf = RandomForestClassifier()
-pipeline = Pipeline(steps=[
-    ('preprocessor', preprocessor),
-    ('classifier', rf)
-])
-pipeline.fit(X_train, y_train)
+rf = RandomForestClassifier(max_depth=8,min_samples_split=3,n_estimators=100)
+rf.fit(X_train, y_train)
 
 # Evaluate the model
-train_accuracy = pipeline.score(X_train, y_train)
-test_accuracy = pipeline.score(X_test, y_test)
+train_accuracy = rf.score(X_train, y_train)
+test_accuracy = rf.score(X_test, y_test)
 print("Training Accuracy:", train_accuracy)
 print("Testing Accuracy:", test_accuracy)
 ```
 
+```{python}
+import matplotlib.pyplot as plt
+
+# Initialize lists to store max depth and testing accuracies
+max_depth_values = []
+test_accuracies = []
+
+# Iterate over different max depth values
+for max_depth in range(1, 15):
+    # Initialize the random forest classifier with the current max depth
+    rf = RandomForestClassifier(max_depth=max_depth, min_samples_split=3, n_estimators=100)
+    
+    # Fit the model
+    rf.fit(X_train, y_train)
+    
+    # Evaluate the model on the test set
+    test_accuracy = rf.score(X_test, y_test)
+    
+    # Append max depth and corresponding test accuracy to the lists
+    max_depth_values.append(max_depth)
+    test_accuracies.append(test_accuracy)
+
+# Plotting the results
+plt.figure(figsize=(10, 6))
+plt.plot(max_depth_values, test_accuracies, marker='o')
+plt.title('Testing Accuracy vs. Max Depth')
+plt.xlabel('Max Depth')
+plt.ylabel('Testing Accuracy')
+plt.xticks(max_depth_values)
+plt.grid(True)
+plt.show()
+```
 
 ### Feature Importnce plot
 ```{python}
-'''
 def plot_feature_importances(model, feature_names):
     n_features = len(feature_names)
-    plt.figure(figsize=(10, 6))  # Adjust the figure size if needed
+    plt.figure(figsize=(10, 6))  
     plt.barh(range(n_features), model.feature_importances_, align='center')
     plt.yticks(range(n_features), feature_names)
     plt.xlabel("Feature importance")
     plt.ylabel("Feature")
     plt.show()
 
-plot_feature_importances(rf_classifier,x_train.columns)
-'''
+plot_feature_importances(rf,X_train.columns)
 ```
 
 ### Sample Decision Tree
 
 ```{python}
-'''
 from sklearn.tree import plot_tree
 plt.figure(figsize=(20,10))
-plot_tree(rf_classifier.estimators_[0], filled=True, feature_names=x_train.columns)
+plot_tree(rf.estimators_[0], filled=True, feature_names=X_train.columns)
 plt.show()
-'''
 ```
 
