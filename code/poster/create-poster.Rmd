@@ -18,6 +18,9 @@ accent_colour: "#63666A"
 column_numbers: 3
 logoleft_name: "georgetown_ms_dsan_logo.jpeg"
 logoright_name: "FHWA-logo.jpeg"
+poster_height: "24in"
+poster_width: "36in"
+body_textsize: "20pt"
 output:
     posterdown::posterdown_html
 ---
@@ -30,7 +33,7 @@ Americans are constantly taking trips by commuting, going to the store, visiting
 
 In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information.
 
-<img src="trip-purpose-distribution.png" alt="Distribution of trip purposes." width="1200" height="700"/>
+![](trip-purpose-distribution.png){width=70%}
 
 # 3 Methods
 
@@ -41,10 +44,9 @@ In order to determine the best model for predicting trip purposes, we trained a 
 ### Random Forest
 
 Our Random forest model had the parameters min_sample_split = 3, max_depth ranging from 2 to 15 and n *estimators = 100. The accuracy was 0.499 for a max*\_depth of 2 and 0.759 for a max_depth of 15.
+![](Randomfores_max_depth_v_test_acc.png){width=70%}
 
-# ![](Randomfores_max_depth_v_test_acc.png)
-
-<img src="feature-importances.png"/> \>\>\>\>\>\>\> 0705b21e50423d3b469d73f2f6d9418672546cc7
+![](feature-importances.png){width=70%}
 
 ### XGBoost
 
@@ -60,11 +62,12 @@ Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has 
 
 # 4 Results
 
-\<\<\<\<\<\<\< HEAD <img src="model-performance-by-class.png" alt="ROC Curve for multi-class classification"/> ======= <img src="model-prediction-certainty-by-class.png"/>
+![](roc-auc.png){width=70%}
 
-<img src="model-performance-by-class.png"/> \>\>\>\>\>\>\> 0705b21e50423d3b469d73f2f6d9418672546cc7
+![](model-performance-by-class.png){width=70%}
 
-<img src="roc-auc.png" alt="ROC Curve for multi-class classification"/>
+![](model-prediction-certainty-by-class.png){width=70%}
+
 
 | Model                  | Accuracy       | ROC AUC |
 |------------------------|----------------|---------|
