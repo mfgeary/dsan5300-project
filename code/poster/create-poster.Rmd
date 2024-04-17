@@ -24,39 +24,47 @@ output:
 
 # 1 Introduction
 
-Americans are constantly taking trips by commuting, going to the store, visiting friends, or going on vacation. Understanding American travel patterns and why Americans travel can provide insights into fields ranging from environmental protection resource allocation to urban planning to economic trends. This statistical research is aimed at studying travel behavior of the American population by predicting the purpose of a trip.
+Americans are constantly taking trips by commuting, going to the store, visiting friends, or going on vacation. Understanding American travel patterns and why Americans travel can provide insights into fields ranging from environmental protection resource allocation to urban planning to economic trends. This statistical research is aimed at studying the travel behavior of the American population by predicting the purpose of trips.
 
 # 2 Data
 
-In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data details the trips that Americans take contains information on individual and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information. 
+In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information. 
 
 <img src="trip-purpose-distribution.png" width="1200" height="700" alt="Distribution of trip purposes.">
 
-# 3 Modeling
+# 3 Methods
 
-In order to determine the best model for predicting trip purposes, we trained a variety of statistical learning models on the data. First we will discuss each model trained and then we will go over the results and best model.
+In order to determine the best model for predicting trip purposes, we trained a variety of statistical learning models on the data. Features with high correlations to the target variable were removed to prevent multicollinearity.
 
 ### Logistic Regression
 
 ### Random Forest
 
-### Support Vector Machine (SVM)
-
-Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has an accuracy of ~53.3%.
-
 ### XGBoost
 
 Our best xgboost model had parameters subsample = 0.6, number of estimators = 300, max_depth = 9, learning_rate = 0.1, gamma = 0, and colsample_bytre = 1.0. It achieved an accuracy rate of ~63%.
 
-<img src="xgboost_conf.png" width="1000" height="500" alt="Confusion matrix from xgboost">
+## Logistic Regression
 
-### Nueral Net 
+### Support Vector Machine (SVM)
 
+Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has an accuracy of ~53.3%.
 
+### Multilayer Perceptron
 
 # 4 Results
 
-Visualize results
+<img src="model-performance-by-class.png" alt="ROC Curve for multi-class classification">
+
+<img src="roc-auc.png" alt="ROC Curve for multi-class classification">
+
+| Model | Accuracy | ROC AUC |
+|-------|----------|---------|
+| Logistic Regression | 0.4576 | 0.75 |
+| Random Forest | ?? | ?? |
+| XGBoost | 0.8116 | 0.97 |
+| Support Vector Machine | 0.5111 | 0.79 |
+| Multilayer Perceptron | 0.5771 | 0.89 |
 
 # 5 Conclusions
 
