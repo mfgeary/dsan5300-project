@@ -56,7 +56,7 @@ Three features with high correlations to the target variable and four ID columns
 
 ### Statistical Modeling
 
-We trained five models on the preprocessed data: logistic regression, random forest, xgboost, support vector machine, and neural network. All models were trained on 80% of the data, using cross validation to tune hyperparameters. Results were assessed using accuracy and ROC AUC.
+We trained five models on the preprocessed data: logistic regression, random forest, XGBoost, support vector machine, and neural network. All models were trained on 80% of the data, using cross validation to tune hyperparameters. Results were assessed using accuracy and ROC AUC.
 
 # Results
 
@@ -73,24 +73,26 @@ results <- tibble::tibble(
 knitr::kable(results)
 ```
 
-```{r model-performance-by-class, echo=FALSE, fig.cap="Model predictive performance for each target class.", out.width='85%', fig.align='center'}
+```{r model-performance-by-class, echo=FALSE, fig.cap="Model predictive performance for each target class.", out.width='88%', fig.align='center'}
 knitr::include_graphics("model-performance-by-class.png")
 ```
 
-```{r model-prediction-certainty-by-class, echo=FALSE, fig.cap="Distribution of prediction probabilities by target class.", out.width='85%', fig.align='center'}
+```{r model-prediction-certainty-by-class, echo=FALSE, fig.cap="Distribution of prediction probabilities by target class.", out.width='90%', fig.align='center'}
 knitr::include_graphics("model-prediction-certainty-by-class.png")
 ```
 
-```{r roc-auc, echo=FALSE, fig.cap="Multiclass receiver operating characteristic curve for all models.", out.width='85%', fig.align='center'}
+```{r roc-auc, echo=FALSE, fig.cap="Multiclass receiver operating characteristic curve for all models.", out.width='88%', fig.align='center'}
 knitr::include_graphics("roc-auc.png")
 ```
 
-```{r feature-importance, echo=FALSE, fig.cap="Feature importance of the tree-based models", out.width='95%', fig.align='center'}
+```{r feature-importance, echo=FALSE, fig.cap="Feature importance of the tree-based models", out.width='100%', fig.align='center'}
 knitr::include_graphics("feature-importance.png")
 ```
 
 # Conclusions
 
-Based on this study, we can see that tree-based methods, especially XGBoost, have the best results for predicting trip purpose from NHTS data from 2022. The most important features in this model include the reason for travel, the trip destination, and whether the trip occurred over the weekend. Future work could include predicting trip purpose on past NHTS survey data to see how travel behavior has changed over time.
+Based on this study, we can see that tree-based methods, especially XGBoost, have the best results for predicting trip purpose from NHTS data in 2022. The most important features in this model include the reason for travel, the trip destination, and whether the trip occurred over the weekend. Our ability to predict trip purpose with high accuracy and ROC AUC suggests that trip purpose is explainable by trip characteristics and demographic information.
+
+Future work could include predicting trip purpose on past NHTS survey data to see how travel behavior has changed over time and implementing different feature selection techniques to improve model performance.
 
 # References

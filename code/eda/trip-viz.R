@@ -70,7 +70,7 @@ all_data |>
     ggplot(aes(x = Actual, y = Prediction, color = model, group = Model)) +
     geom_boxplot(outliers = FALSE) +
     theme_minimal() +
-    scale_color_manual(values = c("#002e62", "#BBBCBC", "#5FA343", "#862633", "#F2A900"), labels = c("Neural Network", "Logistic Regression", "XGBoost", "Support Vector Machine", "Random Forest")) +
+    scale_color_manual(values = c("#002e62", "#BBBCBC", "#5FA343", "#862633", "#F2A900"), labels = c("Neural Network", "Logistic Regression", "Random Forest", "Support Vector Machine", "XGBoost")) +
     scale_x_discrete(labels = c('Home-based\nother (HBO)', 'Home-based \nshopping (HBSHP)','Home-based social/\nrecreational (HBSOC)', 'Home-based\nwork (HBW)', 'Not a home-based\ntrip (NHB)')) +
     labs(
         title = "Model Prediction Probability by Class",
@@ -80,7 +80,7 @@ all_data |>
     )
 
 # Save plot
-ggsave("code/poster/model-prediction-certainty-by-class.png", width = 8, height = 5, dpi = 300)
+ggsave("code/poster/model-prediction-certainty-by-class.png", width = 8.5, height = 5, dpi = 300)
 
 # Create ROC AUC curve in ggplot
 library(tidymodels)
