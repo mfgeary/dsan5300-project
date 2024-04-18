@@ -20,8 +20,8 @@ logoleft_name: "georgetown_ms_dsan_logo.jpeg"
 logoright_name: "FHWA-logo.jpeg"
 poster_height: "24in"
 poster_width: "36in"
-body_textsize: "20pt"
-sectitle_textsize: "55pt"
+body_textsize: "26pt"
+sectitle_textsize: "58pt"
 bibliography: sources.bib
 output:
     posterdown::posterdown_html
@@ -58,10 +58,6 @@ Three features with high correlations to the target variable and four ID columns
 
 We trained five models on the preprocessed data: logistic regression, random forest, xgboost, support vector machine, and neural network. All models were trained on 80% of the data, using cross validation to tune hyperparameters. Results were assessed using accuracy and ROC AUC.
 
-```{r random-forest-tuning, echo=FALSE, fig.cap="Deeper random forest models have higher accuracy on validation set.", out.width='95%', fig.align='center'}
-knitr::include_graphics("rf-max-depth-vs-accuracy.png")
-```
-
 # Results
 
 The XGBoost model performs best on the test set with an accuracy of 0.8217 and an ROC AUC of 0.97. Despite hyperparameter tuning, results vary widely between models. Tree based models perform best at predicting trip purposes.
@@ -81,13 +77,9 @@ knitr::kable(results)
 knitr::include_graphics("model-performance-by-class.png")
 ```
 
-Logistic regression and support vector machine models have the lowest accuracy, and performance varies significantly between classes. XGBoost performs most highly and maintains high accuracy across all classes.
-
 ```{r model-prediction-certainty-by-class, echo=FALSE, fig.cap="Distribution of prediction probabilities by target class.", out.width='85%', fig.align='center'}
 knitr::include_graphics("model-prediction-certainty-by-class.png")
 ```
-
-XGBoost has substantially higher predicted probabilities than all other models across all classes. This means that the most accurate model is also the most certain of its predictions.
 
 ```{r roc-auc, echo=FALSE, fig.cap="Multiclass receiver operating characteristic curve for all models.", out.width='85%', fig.align='center'}
 knitr::include_graphics("roc-auc.png")
@@ -97,9 +89,8 @@ knitr::include_graphics("roc-auc.png")
 knitr::include_graphics("feature-importance.png")
 ```
 
-
 # Conclusions
 
-Based on this study, we can see that tree-based methods have the best results, with the XGBoost classifier achieving the best testing accuracy of 0.8116. The most important features in this model are reason for travel and worker status. Hopefully this model can be used in the future to inform those who wish to study American's movements based on this data.
+Based on this study, we can see that tree-based methods, especially XGBoost, have the best results for predicting trip purpose from NHTS data from 2022. The most important features in this model include the reason for travel, the trip destination, and whether the trip occurred over the weekend. Future work could include predicting trip purpose on past NHTS survey data to see how travel behavior has changed over time.
 
 # References
