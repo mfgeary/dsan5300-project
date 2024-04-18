@@ -21,7 +21,7 @@ logoright_name: "FHWA-logo.jpeg"
 poster_height: "24in"
 poster_width: "36in"
 body_textsize: "26pt"
-sectitle_textsize: "58pt"
+sectitle_textsize: "59pt"
 bibliography: sources.bib
 output:
     posterdown::posterdown_html
@@ -62,7 +62,7 @@ We trained five models on the preprocessed data: logistic regression, random for
 
 The XGBoost model performs best on the test set with an accuracy of 0.8217 and an ROC AUC of 0.97. Despite hyperparameter tuning, results vary widely between models. Tree based models perform best at predicting trip purposes.
 
-```{r result_table, echo=FALSE, fig.cap="Model performance on the test set."}
+```{r result_table, echo=FALSE}
 results <- tibble::tibble(
   Model = c("Logistic Regression", "Random Forest", "XGBoost", "Support Vector Machine", "Neural Network"),
   Accuracy = c(0.4567, 0.7322, 0.8217, 0.5121, 0.5988),
