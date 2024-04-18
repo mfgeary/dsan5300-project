@@ -1,5 +1,5 @@
 ---
-title:  "Why Do Americans Travel: Predicting Trip Purpose from the National Household Travel Survey"
+title:  "Why Americans Travel: Predicting Trip Purpose from the National Household Travel Survey"
 author:
   - name: Marion Bauman
     affil: 1
@@ -29,11 +29,11 @@ output:
 
 # Introduction
 
-Americans are constantly taking trips by commuting, going to the store, visiting friends, or going on vacation. Understanding American travel patterns and why Americans travel can provide insights into fields ranging from environmental protection resource allocation to urban planning to economic trends. This statistical research is aimed at studying the travel behavior of the American population by predicting the purpose of trips.
+Americans are constantly taking trips by commuting to work, going to the store, visiting friends, or going on vacation. Understanding American travel patterns and why Americans travel can provide insights into fields ranging from environmental protection resource allocation to urban planning to economic trends. This statistical research is aimed at studying the travel behavior of the American population by predicting the purpose of trips.
 
 # Data
 
-In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration [-@fhwa2022nhts]. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel.
+In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation's Federal Highway Administration [-@fhwa2022nhts]. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel.
 
 ```{r trip-purpose, fig.cap="Support of trip purpose, the target variable for modeling.", echo=FALSE, out.width='85%', fig.align='center'}
 knitr::include_graphics("trip-purpose-distribution.png")
@@ -48,11 +48,11 @@ p.caption {
 
 # Methods
 
-In order to determine the best model for predicting trip purposes, we trained a 5 statistical learning models on a subset of the survey data. 
+In order to predict trip purposes, we trained various statistical learning models on a subset of the survey data and compared their performance.
 
 ### Data Preprocessing
 
-Three features with high correlations to the target variable and four ID columns were removed from the data due to multicollinearity and lack of predictive power. Seven survey responses with no identified trip purpose were removed. The remaining features were scaled and nominal predictors were encoded.
+Three features with high correlations to the target variable and four ID columns were removed from the data due to multicollinearity and lack of predictive power. Seven survey responses with no identified trip purposes were also removed. The remaining features were scaled and nominal predictors were encoded.
 
 ### Statistical Modeling
 
@@ -60,13 +60,13 @@ We trained five models on the preprocessed data: logistic regression, random for
 
 # Results
 
-The XGBoost model performs best on the test set with an accuracy of 0.8217 and an ROC AUC of 0.97. Despite hyperparameter tuning, results vary widely between models. Tree based models perform best at predicting trip purposes.
+The XGBoost model performs best on the test set with an accuracy of 0.8217 and an ROC AUC of 0.97. Despite hyperparameter tuning, results vary widely between models. Tree-based models perform best at predicting trip purposes.
 
 ```{r result_table, echo=FALSE}
 results <- tibble::tibble(
   Model = c("Logistic Regression", "Random Forest", "XGBoost", "Support Vector Machine", "Neural Network"),
   Accuracy = c(0.4567, 0.7322, 0.8217, 0.5121, 0.5988),
-  `ROC AUC` = c(0.75, 0.93, 0.97, 0.79, 0.89)
+  `ROC AUC` = c(0.75, 0.93, 0.97, 0.81, 0.89)
 ) |>
   dplyr::arrange(desc(Accuracy))
 
