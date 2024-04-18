@@ -21,6 +21,7 @@ logoright_name: "FHWA-logo.jpeg"
 poster_height: "24in"
 poster_width: "36in"
 body_textsize: "20pt"
+bibliography: sources.bib
 output:
     posterdown::posterdown_html
 ---
@@ -31,39 +32,29 @@ Americans are constantly taking trips by commuting, going to the store, visiting
 
 # 2 Data
 
-In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel. It is one of the only data sources that allows users to analyze American travel behaviors based on household and person level information.
+In this study, we used data from the 2022 National Household Travel Survey (NHTS) collected by the U.S. Department of Transportation Federal Highway Administration [@fhwa2022nhts]. This survey data contains information on American individuals and households and their travel habits, including demographic information, modes of transportation, and the purpose for travel \@ref(fig:trip-purpose).
 
-![](trip-purpose-distribution.png){width=70%}
+```{r trip-purpose, fig.cap="Support of trip purpose, the target variable for modeling", echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics("trip-purpose-distribution.png")
+```
 
 # 3 Methods
 
-In order to determine the best model for predicting trip purposes, we trained a variety of statistical learning models on the data. Features with high correlations to the target variable were removed to prevent multicollinearity.
+In order to determine the best model for predicting trip purposes, we trained a 5 statistical learning models on a subset of the survey data. 
 
-### Logistic Regression
+### Data Preprocessing
 
-Our best logistic regression model used L2 regularization and a C value of 10. The best accuracy achieved was ~0.46 and the AUC was 0.75. 
+Three features with high correlations to the target variable and four ID columns were removed from the data due to multicollinearity and lack of predictive power. Seven survey responses with no identified trip purpose were removed. The remaining features were scaled and nominal predictors were encoded.
 
-![](logit_conf.png){width=70%}
+### Statistical Modeling
 
-### Random Forest
+We trained five models on the preprocessed data: logistic regression, random forest, xgboost, support vector machine, and neural network. All models were trained on 80% of the data, using cross validation to tune hyperparameters.
 
-Our Random forest model had the parameters min_sample_split = 3, max_depth ranging from 2 to 15 and n_estimators = 100. The accuracy was 0.499 for a max_depth of 2 and 0.759 for a max_depth of 15.
-
-![](Randomfores_max_depth_v_test_acc.png){width=70%}
-
-![](feature-importances.png){width=70%}
 
 ### XGBoost
 
 Our best xgboost model had parameters subsample = 0.6, number of estimators = 300, max_depth = 9, learning_rate = 0.1, gamma = 0, and colsample_bytre = 1.0. It achieved an accuracy rate of \~63%.
 
-## Logistic Regression
-
-### Support Vector Machine (SVM)
-
-Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has an accuracy of \~53.3%.
-
-### Multilayer Perceptron
 
 # 4 Results
 
@@ -74,18 +65,16 @@ Our best SVM model used a learning rate C of 10 and a polynomial kernel. It has 
 ![](model-prediction-certainty-by-class.png){width=70%}
 
 
-| Model                  | Best Accuracy  | ROC AUC |
+| Model | Accuracy  | ROC AUC |
 |------------------------|----------------|---------|
-| Logistic Regression    | 0.4576         | 0.75    |
-| Random Forest          | 0.759          | 0.93    |
-| XGBoost                | 0.8116         | 0.97    |
-| Support Vector Machine | 0.5111         | 0.79    |
-| Multilayer Perceptron  | 0.5771         | 0.89    |
+| Logistic Regression | 0.4567 | 0.75 |
+| Random Forest | 0.7322 | 0.93 |
+| XGBoost | 0.8217 | 0.97 |
+| Support Vector Machine | 0.5121 | 0.79 |
+| Neural Network | 0.5988 | 0.89 |
 
 # 5 Conclusions
 
 Based on this study, we can see that the XGBoost classifier has the best testing accuracy of 0.8116. The most important features in this model are reason for travel and worker status. Hopefully this model can be used in the future to inform those who wish to study American's movements based on this data.
 
 # References
-
-Federal Highway Administration. (2022). 2022 NextGen NHTS National Passenger OD Data, U.S. Department of Transportation, Washington, DC. Available online: <https://nhts.ornl.gov/od/>.
