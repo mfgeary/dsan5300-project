@@ -1,5 +1,5 @@
 ---
-title:  "Poster Title"
+title:  "Why Do Americans Travel: Predicting Trip Purpose from the National Household Travel Survey"
 author:
   - name: Marion Bauman
     affil: 1
