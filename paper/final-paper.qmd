@@ -36,11 +36,6 @@ format:
 
 ---
 
-```{r}
-# tinytex::tlmgr_update() 
-# tinytex::reinstall_tinytex(repository = "illinois")
-```
-
 {{< include _introduction.qmd >}}
 
 {{< include _methods.qmd >}}

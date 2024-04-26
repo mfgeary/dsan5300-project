@@ -260,7 +260,7 @@
    \center{
    {\fontfamily{pzc} \fontsize{28}{32} \selectfont DSAN 53000}
    \vfill
-   {\it \small \@Month{} 2024, Volume~\@Volume, \@Seriesname~\@Issue.%
+   {\it \small April 30, 2024
             \hfill \href{https://github.com/anly512/5300-project-group-6}{https://github.com/anly512/5300-project-group-6}}}\\[0.1cm]
      \hrule height 3pt}}
 \if@review
