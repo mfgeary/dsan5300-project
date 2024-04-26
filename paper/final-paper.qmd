@@ -37,8 +37,6 @@ format:
 bibliography: bibliograph.bib
 ---
 
-Let me test [@fhwa2022nhts]
-
 {{< include paper-content/_introduction.qmd >}}
 
 {{< include paper-content/_methods.qmd >}}
