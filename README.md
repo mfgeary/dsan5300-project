@@ -33,7 +33,8 @@ Our EDA can be found in the `eda/` folder. It can be viewed in either `eda.html`
 - [x] Exploratory data analysis
 - [x] Model the data using statistical learning
 - [x] Analyze the results
-- [ ] Create poster
+- [x] Create poster
+- [ ] Write paper
 
 ## Repo Organization
 
