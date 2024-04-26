@@ -1,3 +1,16 @@
 ## Methods
 
-Methods here
+### Data
+
+As a federally funded agency, the Department of Transportation's Federal Highway Administration seeks to understand how Americans are using the national highway system. Since 1969, the FHA has regularly conducted the National Highway Travel Survey (NHTS) in order to collect detailed data on the travel habits of Americans and their usage of federal transit networks [@userguide]. From January 2022 through January 2023, the FHA conducted the 2022 NHTS, receiving responses from 7,XXX households [@website]. Survey data includes in-depth information regarding each household member's travel habits across the past 30 days, detailing individual demographic information; household-level demographic information; purpose, location, duration, and mode of transportation for recent travel; and vehicle information [@datadictionary].
+
+For our research, we chose to utilize the individual demographic information, called the `person` data, along with the trip specific data, called the `trip` data. These two data sources contained XX predictors that were unique for each observation. We selected these table because 1) XX predictors was more than sufficient for modeling, and 2) the household and vehicle level data was shared across different observation, creating potential obfuscation in modeling. The final joined data set of `person` and `trip` data contained XXXX observations and XX features, including one target variable.
+
+### Preprocessing
+
+To prepare the data for modeling, we conducting a thorough cleansing process that included creating human-readable variable names and removing missing or incomplete observations. The final data set was a joined combination between person-level data and trip-level data. After joining, all unique identifier variables and flag variables were removed from the data.
+
+Next, a correlation analysis was conducted to prevent autocorrelation or multicollinearity between variables. An analysis revealed that three variables had correlations over 0.2 with the target variable and were highly related in content to the target variable. In order to build a more robust model, these three variables, `why_trip`, `trip_purpose_old_schema`, and `reason_for_travel_to` were removed.
+
+![](imgs/correlation-matrix.jpg)
+
