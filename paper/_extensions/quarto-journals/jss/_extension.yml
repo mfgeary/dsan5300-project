@@ -32,10 +32,8 @@ contributes:
         - "partials/before-body.tex"
         - "partials/_print-address.tex"
         - "partials/_print-author.tex"
-      cite-method: natbib
       biblio-config: false
       format-resources:
-        - jss.bst
         - jss.cls
         - georgetown_ms_dsan_logo.jpeg
     html:

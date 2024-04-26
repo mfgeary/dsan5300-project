@@ -26,7 +26,6 @@ abstract: |
 keywords: [key, words]
 keywords-formatted: [key, words]
 
-bibliography: ../code/poster/sources.bib
 date: last-modified
 format:
     pdf: default
@@ -35,7 +34,10 @@ format:
         journal:
             suppress: [footer]
 
+bibliography: bibliograph.bib
 ---
+
+Let me test [@fhwa2022nhts]
 
 {{< include paper-content/_introduction.qmd >}}
 
