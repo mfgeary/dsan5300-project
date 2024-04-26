@@ -147,9 +147,9 @@
 \DOI{10.18637/jss.v000.i00}
 \if@article
   \Seriesname{Issue}
-  \Hypersubject{Journal of Statistical Software}
-  \Plaintitle{\@title}
-  \Shorttitle{\@title}
+  \Hypersubject{DSAN 5300}
+  \Plaintitle{Why Americans Travel}
+  \Shorttitle{Why Americans Travel}
   \Plainkeywords{\@Keywords}
 \fi
 
@@ -228,7 +228,7 @@
     \vfill
     \hrule \nopagebreak
     \vspace{.1\baselineskip}
-    {\fontfamily{pzc} \fontsize{13}{15} \selectfont Journal of Statistical Software}
+    {\fontfamily{pzc} \fontsize{13}{15} \selectfont DSAN 5300}
     \hfill
     \url{http://www.jstatsoft.org/}\\ \nopagebreak
     published by the Foundation for Open Access Statistics

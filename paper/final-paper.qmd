@@ -1,6 +1,5 @@
 ---
-title: "Why Americans Travel"
-subtitle: "Predicting Trip Purpose from the National Household Travel Survey"
+title: "Why Americans Travel: Predicting Trip Purpose from the National Household Travel Survey"
 authors:
     - name: Marion Bauman
       affiliations: 
@@ -33,6 +32,7 @@ format:
         keep-tex: true
         journal:
             suppress: [footer]
+
 
 bibliography: bibliograph.bib
 ---
