@@ -1,2 +1,10 @@
 ## Introduction
 
+Americans are in constant transit, utilizing the national interstate and highway system to travel various distances. Whether commuting to work, taking vacations, visiting friends and family, transporting goods and services, or engaging in commerce, people are constantly moving. Understanding U.S. travel patterns provides essential insights into a wide range of fields including environmental protection resource allocation, urban planning, and economic trends. This research aims to understand the motivation behind American travel based on trip specifics. Specifically, we seek to predict the purpose of trips in order to understand the connection between travel details and purpose for travel.
+
+### Data
+
+As a federally funded agency, the Department of Transportation's Federal Highway Administration seeks to understand how Americans are using the national highway system. Since 1969, the FHA has regularly conducted the National Highway Travel Survey (NHTS) in order to collect detailed data on the travel habits of Americans and their usage of federal transit networks [@userguide]. From January 2022 through January 2023, the FHA conducted the 2022 NHTS, receiving responses from 7,XXX households [@website]. Survey data includes in-depth information regarding each household member's travel habits across the past 30 days, detailing individual demographic information; household-level demographic information; purpose, location, duration, and mode of transportation for recent travel; and vehicle information [@datadictionary].
+
+For our research, we chose to utilize the individual demographic information, called the `person` data, along with the trip specific data, called the `trip` data. These two data sources contained XX predictors that were unique for each observation. We selected these table because 1) XX predictors was more than sufficient for modeling, and 2) 
+
