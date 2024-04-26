@@ -7,15 +7,15 @@ authors:
           department: Department of Data Science and Statistics
       email: mfg77@georgetown.edu
       url: https://github.com/mfgeary
+    - name: Aaron Schwall
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
     - name: Varun Patel
       affiliations: 
         - name: Georgetown University
           department: Department of Data Science and Statistics
     - name: Yuhan Cui
-      affiliations: 
-        - name: Georgetown University
-          department: Department of Data Science and Statistics
-    - name: Aaron Schwall
       affiliations: 
         - name: Georgetown University
           department: Department of Data Science and Statistics

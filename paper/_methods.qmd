@@ -1,1 +1,3 @@
-# Methods
+## Methods
+
+Methods here
