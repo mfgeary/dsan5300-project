@@ -35,14 +35,27 @@ Our EDA can be found in the `eda/` folder. It can be viewed in either `eda.html`
 - [x] Analyze the results
 - [x] Create poster
 - [ ] Write paper
+    - [ ] Introduction (`paper/paper-content/_introduction.qmd`)
+    - [ ] Methods (`paper/paper-content/_methods.qmd`)
+    - [ ] Results (`paper/paper-content/_results.qmd`)
+    - [ ] Discussion (`paper/paper-content/_discussion.qmd`)
+    - [ ] Conclusion (`paper/paper-content/_conclusion.qmd`)
 
 ## Repo Organization
 
 The repo is organized as follows:
 
 * `data/` contains our data as well as the documentation for the data. It contains two subfolders:
-    * `raw/`, which contains the raw data, and
-    * `clean/`, which contains the cleaned data.
+    * `raw/`, which contains the raw data
+    * `clean/`, which contains the cleaned data
+    * `resources/`, which includes documentation for the NHTS and related NHTS resources
 * `code/` contains all of our code for the project. It is further organized into subfolders based on the type of code/phase of the project. Current subfolders are:
     * `data-cleaning/`, which contains code for cleaning the data
     * `eda/`, which has code for doing exploratory data analysis
+    * `modeling/`, which contains code for all statistical learning modeling
+    * `poster/`, which holds all code for creating and reproducing our final poster for the poster presentation
+* `final-models/` contains the final models, stored as pickle files, and their final predictions (both as classes and as probabilities)
+* `paper/` contains the code for generating our final paper using Quarto. The final paper is stored in `final-paper.qmd`, and sourced from the nested files:
+    * `_extensions/` houses the relevant Quarto extensions. This includes a modified extension for styling our final paper as a professional article
+    * `paper-content/` contains the text for our paper split into multiple Quarto files
+    * `imgs/` holds the images for our final paper

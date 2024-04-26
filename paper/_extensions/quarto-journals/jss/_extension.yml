@@ -37,7 +37,7 @@ contributes:
       format-resources:
         - jss.bst
         - jss.cls
-        - jsslogo.jpg
+        - georgetown_ms_dsan_logo.jpeg
     html:
       number-sections: true
       toc: true
