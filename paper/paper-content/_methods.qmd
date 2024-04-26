@@ -12,11 +12,9 @@ To prepare the data for modeling, we conducting a thorough cleansing process tha
 
 Next, a correlation analysis was conducted to prevent autocorrelation or multicollinearity between variables. An analysis revealed that three variables had correlations over 0.2 with the target variable and were somewhat related in content to the target variable (>0.2). In order to build a more robust model, these three variables, `why_trip`, `trip_purpose_old_schema`, and `reason_for_travel_to` were removed.
 
-![](imgs/correlation-matrix.jpg){fig-width=40%}
-
 Our target variable had five classes for categorizing the purpose of trips. We assessed the balance of the classes in order to ensure our final model would be unbiased. Seven observations with no data for the target variables were omitted.
 
-![](../code/poster/trip-purpose-distribution.png)
+![Support of trip purpose, the target variable for modeling.](../code/poster/trip-purpose-distribution.png){#fig-trip-purpose width=70%}
 
 An analysis of the target variable support shows that the classes are fairly balanced. While there is a distinction between the class sizes, each class has a significantly large sample size to create a fairly unbiased model. Modeling will be assess using balanced metrics in order to verify that final results remain unbiased by class imbalance.
 
@@ -24,8 +22,14 @@ For all modeling, numerical predictors were scaled and centered to normalize pre
 
 ### Statistical Modeling
 
-In order to predict trip purpose using NHTS data, we trained and assessed five different statistical learning model architectures. We aimed to establish a based
+In order to predict trip purpose using NHTS data, we trained and assessed five different statistical learning model architectures. We aimed to establish a base line model and then test various methods in order to improve the predictive power of the statistical learning. Our goal was to achieve a high predictive accuracy and a high ROC AUC score, creating a model with strong predictive power and balanced results.
 
+#### Logistic Regression
 
+#### Support Vector Machine
 
-#### 
+#### Neural Network
+
+#### Random Forest
+
+#### XGBoost

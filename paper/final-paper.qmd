@@ -43,4 +43,6 @@ format:
 
 {{< include paper-content/_results.qmd >}}
 
+{{< include paper-content/_discussion.qmd >}}
+
 {{< include paper-content/_conclusion.qmd >}}
