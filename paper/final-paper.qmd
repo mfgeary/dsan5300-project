@@ -1,0 +1,50 @@
+---
+title: "Why Americans Travel: Predicting Trip Purpose from the National Household Travel Survey"
+authors:
+    - name: Marion Bauman
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+      email: mfg77@georgetown.edu
+      url: https://github.com/mfgeary
+    - name: Varun Patel
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+    - name: Yuhan Cui
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+    - name: Aaron Schwall
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+abstract: |
+  INSERT ABSTRACT HERE
+
+keywords: [key, words]
+keywords-formatted: [key, words]
+
+bibliography: bibliography.bib  
+date: last-modified
+format:
+    pdf: default
+    jss-pdf:
+        keep-tex: true
+        journal:
+            suppress: [footer]
+
+---
+
+```{r}
+# tinytex::tlmgr_update() 
+# tinytex::reinstall_tinytex(repository = "illinois")
+```
+
+{{< include _introduction.qmd >}}
+
+{{< include _methods.qmd >}}
+
+{{< include _results.qmd >}}
+
+{{< include _conclusion.qmd >}}
