@@ -43,4 +43,4 @@ A random forest classifier was utilized to predict trip purpose from the observa
 
 #### XGBoost
 
-Finally, an XGBoost classifier was trained to predict trip purpose from our training data. The XGBoost model was hypertuned for maximum tree depth, learning rate of the optimizer, number of trees (estimators), the minimum loss reduction required to split a leaf (also called gamma), the subsampling ratio for preventing overfitting, and the subsample size of the columns used by each tree.
+Finally, an XGBoost classifier was trained to predict trip purpose from our training data. The XGBoost model was hypertuned for maximum tree depth, learning rate of the optimizer, number of trees (estimators), the minimum loss reduction required to split a leaf (also called gamma), the subsampling ratio for preventing overfitting, and the subsample size of the columns used by each tree. XGBoost was hypertuned using 3-fold cross validation and a random grid search.
