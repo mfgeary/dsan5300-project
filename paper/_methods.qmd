@@ -10,7 +10,22 @@ For our research, we chose to utilize the individual demographic information, ca
 
 To prepare the data for modeling, we conducting a thorough cleansing process that included creating human-readable variable names and removing missing or incomplete observations. The final data set was a joined combination between person-level data and trip-level data. After joining, all unique identifier variables and flag variables were removed from the data.
 
-Next, a correlation analysis was conducted to prevent autocorrelation or multicollinearity between variables. An analysis revealed that three variables had correlations over 0.2 with the target variable and were highly related in content to the target variable. In order to build a more robust model, these three variables, `why_trip`, `trip_purpose_old_schema`, and `reason_for_travel_to` were removed.
+Next, a correlation analysis was conducted to prevent autocorrelation or multicollinearity between variables. An analysis revealed that three variables had correlations over 0.2 with the target variable and were somewhat related in content to the target variable (>0.2). In order to build a more robust model, these three variables, `why_trip`, `trip_purpose_old_schema`, and `reason_for_travel_to` were removed.
 
-![](imgs/correlation-matrix.jpg)
+![](imgs/correlation-matrix.jpg){fig-width=40%}
 
+Our target variable had five classes for categorizing the purpose of trips. We assessed the balance of the classes in order to ensure our final model would be unbiased. Seven observations with no data for the target variables were omitted.
+
+![](../code/poster/trip-purpose-distribution.png)
+
+An analysis of the target variable support shows that the classes are fairly balanced. While there is a distinction between the class sizes, each class has a significantly large sample size to create a fairly unbiased model. Modeling will be assess using balanced metrics in order to verify that final results remain unbiased by class imbalance.
+
+For all modeling, numerical predictors were scaled and centered to normalize predictive influence. Categorical predictors were one-hot encoded, generating binary nomial predictors for each class level.
+
+### Statistical Modeling
+
+In order to predict trip purpose using NHTS data, we trained and assessed five different statistical learning model architectures. We aimed to establish a based
+
+
+
+#### 
