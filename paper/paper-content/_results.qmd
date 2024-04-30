@@ -2,12 +2,12 @@
 
 We observe that the XGBoost machine learning algorithm performed the best with a test accuracy of 82.17% followed by a Random Forest model which had an accuracy of 73.22%. A neural network model was also fit to the data but it only resulted in an accuracy of 59.88%, followed by Support Vector Machines and Logistic Regression which had accuracy rates of 51.21% and 45.67%.
 
-![](images/Screenshot.png){fig-align="center"}
+![](imgs/Screenshot.png){fig-align="center"}
 
 We also observed the ROC AUC curve to be the greatest for XGBoost model-0.97, followed by Random Forest which had the ROC AUC curve of 0.93. Overall, XGBoost model performed the best out of all the five models that were trained on the data.
 
-![](images/roc-auc.png){fig-align="center"}
+![](imgs/roc-auc.png){fig-align="center"}
 
 We also observe the predicted probability for different classes for different models that were trained. As observed, the mean predicted probability for each class for the XGBoost model appears to be between 0.75 and 1.00 which displays the high likelihood that the data point belongs to that particular class. Almost all other algorithms perform much poorly compared to XGBoost
 
-![](images/model-prediction-certainty-by-class.png){fig-align="center"}
+![](imgs/model-prediction-certainty-by-class.png){fig-align="center"}
