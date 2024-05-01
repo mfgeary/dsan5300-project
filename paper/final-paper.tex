@@ -164,7 +164,7 @@
 \makeatletter
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, breakable, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, enhanced, frame hidden]}{\end{tcolorbox}}\fi
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -175,6 +175,8 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Why Americans Travel: Predicting Trip Purpose from the National Household Travel Survey},
+  pdfkeywords={NHTS, R, XGBoost, SVM, Random Forest, Neural
+Network, Logistic Regression},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -209,6 +211,10 @@ over 82 percent and a ROC AUC of 0.97. We then discuss the implications
 of these results and possible future applications of these findings.}
 
 %% at least one keyword must be supplied
+\Keywords{NHTS, R, XGBoost, SVM, Random Forest, Neural Network, Logistic
+Regression}
+\Plainkeywords{NHTS, R, XGBoost, SVM, Random Forest, Neural
+Network, Logistic Regression}
 
 %% publication information
 %% NOTE: Typically, this can be left commented and will be filled out by the technical editor
