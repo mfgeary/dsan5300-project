@@ -4,8 +4,6 @@
 
 **Authors:** Marion Bauman ([@mfgeary](https://github.com/mfgeary)), Yuhan Cui, Varun Patel ([@vp472](https://github.com/vp472)), Aaron Schwall ([@aaron-schwall](https://github.com/aaron-schwall))
 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/nEmJfSBb)
-
 ## Data Source
 
 We are using the National Household Travel Survey (NHTS) data from 2022 for our project. The data can be found at [https://nhts.ornl.gov/downloads](https://nhts.ornl.gov/downloads) and the data dictionary can be found at [https://nhts.ornl.gov/documentation](https://nhts.ornl.gov/documentation). The NHTS is a survey on U.S. travel, conducted by the U.S. Department of Transportation (USDOT) Federal Highway Administration.
