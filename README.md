@@ -4,6 +4,8 @@
 
 **Authors:** Marion Bauman ([@mfgeary](https://github.com/mfgeary)), Yuhan Cui, Varun Patel ([@vp472](https://github.com/vp472)), Aaron Schwall ([@aaron-schwall](https://github.com/aaron-schwall))
 
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/nEmJfSBb)
+
 ## Data Source
 
 We are using the National Household Travel Survey (NHTS) data from 2022 for our project. The data can be found at [https://nhts.ornl.gov/downloads](https://nhts.ornl.gov/downloads) and the data dictionary can be found at [https://nhts.ornl.gov/documentation](https://nhts.ornl.gov/documentation). The NHTS is a survey on U.S. travel, conducted by the U.S. Department of Transportation (USDOT) Federal Highway Administration.
@@ -19,27 +21,38 @@ There are 5 total datasets that result from the National Household Travel Survey
 
 Note that all datasets are stored as both parquet for preservation of data types and csv for ease of use.
 
-## Exploratory Data Analysis
-
-Our EDA can be found in the `eda/` folder. It can be viewed in either `eda.html` or `eda.pdf`.
-
 ## Things to Do
 
 - [x] Choose dataset
 - [x] Clean the data
-- [ ] Define data science question that will be answered with data
+- [x] Define data science question that will be answered with data
 - [x] Exploratory data analysis
-- [ ] Model the data using statistical learning
-- [ ] Analyze the results
-- [ ] Create poster
+- [x] Model the data using statistical learning
+- [x] Analyze the results
+- [x] Create poster
+- [ ] Write paper
+    - [ ] Abstract (`paper/final-paper.qmd`)
+    - [x] Introduction (`paper/paper-content/_introduction.qmd`)
+    - [x] Methods (`paper/paper-content/_methods.qmd`)
+    - [ ] Results (`paper/paper-content/_results.qmd`)
+    - [ ] Discussion (`paper/paper-content/_discussion.qmd`)
+    - [ ] Conclusion (`paper/paper-content/_conclusion.qmd`)
 
 ## Repo Organization
 
 The repo is organized as follows:
 
 * `data/` contains our data as well as the documentation for the data. It contains two subfolders:
-    * `raw/`, which contains the raw data, and
-    * `clean/`, which contains the cleaned data.
+    * `raw/`, which contains the raw data
+    * `clean/`, which contains the cleaned data
+    * `resources/`, which includes documentation for the NHTS and related NHTS resources
 * `code/` contains all of our code for the project. It is further organized into subfolders based on the type of code/phase of the project. Current subfolders are:
     * `data-cleaning/`, which contains code for cleaning the data
     * `eda/`, which has code for doing exploratory data analysis
+    * `modeling/`, which contains code for all statistical learning modeling
+    * `poster/`, which holds all code for creating and reproducing our final poster for the poster presentation
+* `final-models/` contains the final models, stored as pickle files, and their final predictions (both as classes and as probabilities)
+* `paper/` contains the code for generating our final paper using Quarto. The final paper is stored in `final-paper.qmd`, and sourced from the nested files:
+    * `_extensions/` houses the relevant Quarto extensions. This includes a modified extension for styling our final paper as a professional article
+    * `paper-content/` contains the text for our paper split into multiple Quarto files
+    * `imgs/` holds the images for our final paper

@@ -1,0 +1,12 @@
+## Conclusion
+
+Based on this study, we can see that tree-based methods, especially XGBoost, have the best results for predicting trip purpose from NHTS data in 2022. The most important features in this model include the reason for travel, worker status, the trip destination, and whether the trip occurred over the weekend. Our best test accuracy from the XGBoost model was 82.17%, which is nearly double the best test accuracy achieved by the baseline logistic regression model. Our ability to predict trip purpose with high accuracy and ROC AUC suggests that trip purpose is explainable by trip characteristics and demographic information. 
+
+There are many potential future applications that can be based on the findings in this study. One possible future application would be to move from using survey data to observed data. Similar data could be collected by taxi or ride sharing companies like Uber or Lyft, and the predicted trip purpose could be used to to better determine how many cars will be needed in certain areas. Similar trip characteristics and demographic information can be collected by many other types of businesses and organizations from hotel chains to environmental researchers. Being able to accurately predict the purposes of trips will have significant impact for hotel chains by allowing them to predict where more capacity will be needed and how specific hotels can be expected to perform. Similarly, accurate trip purpose predictions will allow climate researchers to determine where to target efforts for future green house gas emission reductions. For example, places and trip modalities that are mostly used for work are unlikely to be easily changed, while trip modalities that are used mostly for recreation may be more easily targeted for reductions. 
+
+Lastly, there are several ways in which the models examined in this study may be enhanced in the future. Our full dataset contained over 60 different features to be used by our models. By applying a feature selection or dimensionality reduction algorithm like PCA or t-SNE we could remove the features with the lowest importance to our final models. This may allow the models to perform better. One area of future research would be to examine how adding past NHTS survey data effects the predictions. This would give us a better idea of how reliable our predictions may be in the future based on similar survey data. 
+
+
+
+
+

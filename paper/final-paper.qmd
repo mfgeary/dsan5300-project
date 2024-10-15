@@ -1,0 +1,45 @@
+---
+title: "Why Americans Travel: Predicting Trip Purpose from the National Household Travel Survey"
+authors:
+    - name: Marion Bauman
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+    - name: Aaron Schwall
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+    - name: Varun Patel
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+    - name: Yuhan Cui
+      affiliations: 
+        - name: Georgetown University
+          department: Department of Data Science and Statistics
+abstract: |
+  In this study, we examine data from the National Highway Travel Survey (NHTS), which is conducted yearly by the Federal Highway Administration (FHWA) to gather information about household travel habits [@fhwa2022nhts]. We examine data from the 2022 survey and train five models in an attempt to accurately predict the trip purpose. The models trained include logistic regression, support vector machine (SVM), nueral network, random forest, and XGBoost. We find that XGBoost performs the best with a test accuracy over 82 percent and a ROC AUC of 0.97. We then discuss the implications of these results and possible future applications of these findings.
+
+keywords: [NHTS, R, XGBoost, SVM, Random Forest, Neural Network, Logistic Regression]
+keywords-formatted: [NHTS, R, XGBoost, SVM, Random Forest, Neural Network, Logistic Regression]
+
+date: last-modified
+format:
+    jss-pdf:
+        keep-tex: true
+        journal:
+            suppress: [footer]
+
+
+bibliography: bibliograph.bib
+---
+
+{{< include paper-content/_introduction.qmd >}}
+
+{{< include paper-content/_methods.qmd >}}
+
+{{< include paper-content/_results.qmd >}}
+
+{{< include paper-content/_discussion.qmd >}}
+
+{{< include paper-content/_conclusion.qmd >}}
