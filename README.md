@@ -30,13 +30,13 @@ Note that all datasets are stored as both parquet for preservation of data types
 - [x] Model the data using statistical learning
 - [x] Analyze the results
 - [x] Create poster
-- [ ] Write paper
-    - [ ] Abstract (`paper/final-paper.qmd`)
+- [x] Write paper
+    - [x] Abstract (`paper/final-paper.qmd`)
     - [x] Introduction (`paper/paper-content/_introduction.qmd`)
     - [x] Methods (`paper/paper-content/_methods.qmd`)
-    - [ ] Results (`paper/paper-content/_results.qmd`)
-    - [ ] Discussion (`paper/paper-content/_discussion.qmd`)
-    - [ ] Conclusion (`paper/paper-content/_conclusion.qmd`)
+    - [x] Results (`paper/paper-content/_results.qmd`)
+    - [x] Discussion (`paper/paper-content/_discussion.qmd`)
+    - [x] Conclusion (`paper/paper-content/_conclusion.qmd`)
 
 ## Repo Organization
 
